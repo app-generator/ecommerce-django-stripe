@@ -137,4 +137,4 @@ The project has a simple structure, represented as bellow:
 <br />
 
 ---
-Django Stripe Sample - Free sample provided by [AppSeed](https://appseed.us).
+**Django Stripe Sample** - Free sample provided by [AppSeed](https://appseed.us).
