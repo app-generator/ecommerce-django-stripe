@@ -14,7 +14,7 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 <br />
 
-![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
+https://user-images.githubusercontent.com/51070104/196485430-1fdbc67d-b532-4b5c-b358-11baeee43437.mp4
 
 <br />
 
@@ -93,6 +93,10 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 <br />
 
 ![Django Stripe Sample - Air ZOOM Pegasus (sample Product](https://user-images.githubusercontent.com/51070104/152586940-2f3b31fb-f067-487a-98ca-26d9e1936514.png)
+
+<br />
+
+![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
 
 <br />
 
