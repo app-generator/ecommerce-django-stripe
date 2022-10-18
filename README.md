@@ -96,6 +96,8 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
+> Homepage eCommerce cards
+
 ![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
 
 <br />
