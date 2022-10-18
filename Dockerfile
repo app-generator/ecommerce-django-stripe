@@ -23,7 +23,6 @@ WORKDIR /backend
 
 
 RUN chmod +x /backend/entrypoint.sh
-RUN chmod +x /backend/media
 
 
 CMD ["/backend/entrypoint.sh"]
