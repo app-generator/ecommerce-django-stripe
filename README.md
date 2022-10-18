@@ -14,9 +14,13 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 <br />
 
-### Create `.env` using provided `env.sample`
+## ✨ Quick Start
 
-> 👉 Add `.env` file in your projects root directory and add the following credentials
+<br />
+
+> 👉 Create `.env` using provided `env.sample`
+
+ Add `.env` file in your projects root directory and add the following credentials
 
 ```
 DEBUG=True
@@ -25,10 +29,6 @@ STRIPE_SECRET_KEY=
 STRIPE_PUBLISHABLE_KEY=
 DOMAIN_URL=
 ```
-
-<br />
-
-## ✨ Quick Start
 
 <br />
 
