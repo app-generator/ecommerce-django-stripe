@@ -18,7 +18,7 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 <br />
 
-> 👉 Create `.env` using provided `env.sample`
+> 👉 **Step 1** - Create `.env` using provided `env.sample`
 
  Add `.env` file in your projects root directory and add the following credentials
 
@@ -32,7 +32,7 @@ DOMAIN_URL=
 
 <br />
 
-> 👉 Install dependencies
+> 👉 **Step 2** - Install dependencies
 
 ```bash
 $ python -m venv env
@@ -42,7 +42,7 @@ $ pip install -r requirements.txt
 
 <br /> 
 
-> 👉 Migrate DB & Start the APP
+> 👉 **Step 3** - Migrate DB & Start the APP
 
 ```bash
 $ python manage.py migrate
@@ -53,7 +53,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-> 👉 Access the products and initiate a payment
+> 👉 **Step 4** - Access the products and initiate a payment
 
 **IMPORTANT**: Make sure your Stripe account is running in `TEST Mode` and Use Test CC provided by Stripe:
 
@@ -62,7 +62,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ Create a new Product
+## ✨ **Step 5** - Create a new Product
 
 - Go to `products/templates/products` directory
 - Create a new `JSON` file with data:
@@ -83,7 +83,6 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
     - `http://127.0.0.1:8000/product/<SLUG>/` where the SLUG is the name of the JSON file 
   
 <br />
-
 
 > Sample product page generated for [Air ZOOM Pegasus](./products/templates/products/product-air-zoom-pegasus.json), assets loaded from [here](./products/static/products/product-air-zoom-pegasus)
 
