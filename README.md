@@ -14,6 +14,10 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 <br />
 
+![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
+
+<br />
+
 ## ✨ Quick Start
 
 <br />
