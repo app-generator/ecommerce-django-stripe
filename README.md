@@ -2,6 +2,8 @@
 
 Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the [templates](https://github.com/app-generator/sample-django-stripe/tree/main/products/templates/products) directory (no database required) and uses a decent UI for page styling - Powered by **Django**.
 
+<br />
+
 > Features:
 
 - ✅ [Soft UI Design](https://www.creative-tim.com/product/soft-ui-design-system?AFFILIATE=128200) (Free Version) by `Creative-Tim`
