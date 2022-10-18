@@ -1,5 +1,7 @@
 # Django & Stripe `Mini eCommerce`
 
+Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the [templates](https://github.com/app-generator/sample-django-stripe/tree/main/products/templates/products) directory (no database required) and uses a decent UI for page styling - Powered by **Django**.
+
 > Features:
 
 - ✅ [Soft UI Design](https://www.creative-tim.com/product/soft-ui-design-system?AFFILIATE=128200) (Free Version) by `Creative-Tim`
@@ -10,7 +12,7 @@
 
 <br />
 
-## ✨ Create `.env` using provided `env.sample`
+### Create `.env` using provided `env.sample`
 
 > 👉 Add `.env` file in your projects root directory and add the following credentials
 
@@ -58,7 +60,6 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-
 ## ✨ Create a new Product
 
 - Go to `products/templates/products` directory
@@ -86,7 +87,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-![Flask Stripe Sample - Air ZOOM Pegasus (sample Product](https://user-images.githubusercontent.com/51070104/152586940-2f3b31fb-f067-487a-98ca-26d9e1936514.png)
+![Django Stripe Sample - Air ZOOM Pegasus (sample Product](https://user-images.githubusercontent.com/51070104/152586940-2f3b31fb-f067-487a-98ca-26d9e1936514.png)
 
 <br />
 
