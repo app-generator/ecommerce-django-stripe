@@ -1,7 +1,12 @@
 # Change Log
 
+## [1.0.1] 2022-10-18
+### Improvements
+
+- Added `license` & `CHANGELOG`
+
 ## [1.0.0] 2022-10-18
-### First Version
+### Stable Version
 
 - Products loaded from `templates` directory
 - Stripe v3
