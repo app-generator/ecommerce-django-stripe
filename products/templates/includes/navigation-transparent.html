@@ -1,4 +1,4 @@
-{% load static sample_products %}
+{% load static %}
 
   <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
@@ -47,12 +47,9 @@
                 <a href="/" class="dropdown-item border-radius-md">
                   All Products
                 </a>
-                {% sample_product_list as sample_products %}
-                {% for product in sample_products %}
-                <a href="{% url 'product_details' slug=product.slug %}" class="dropdown-item border-radius-md">
-                  {{ product.name }}
+                <a href="{% url 'product_details' 'product-air-zoom-pegasus' %}" class="dropdown-item border-radius-md">
+                  Nike Air Zoom
                 </a>
-                {% endfor %}
               </div>
               <div class="d-lg-none">
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0">

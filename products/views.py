@@ -1,25 +1,38 @@
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import JsonResponse
-from products.models import Product
 import stripe
+from products.utils import get_products, Product, load_product, load_product_by_slug
 
 stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
 # Create your views here.
 
 def index(request):
-    featured = Product.objects.filter(is_featured=True).first()
-    products = Product.objects.all().exclude(is_featured=True)
+    # Collect Products
+    products = []
+    featured_product = None
+    
+    # Scan all JSONs in `templates/products`
+    for aJsonPath in get_products():  
+        if 'featured.json' in aJsonPath:
+            continue
+
+        # Load the product info from JSON
+        product = load_product( aJsonPath )
+        
+        # Is Valid? Save the object
+        if product:     
+            products.append( product )
 
     context = {
-        'featured': featured,
+        'featured': load_product_by_slug('featured'),
         'products': products
     }
     return render(request, 'ecommerce/index.html', context)
 
 
 def product_details(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+    product = load_product_by_slug( slug )
     STRIPE_IS_ACTIVE = getattr(settings, 'STRIPE_IS_ACTIVE')
 
     context = { 
@@ -39,7 +52,7 @@ def cancelled(request):
     return render(request, "ecommerce/payment-cancelled.html")
 
 def create_checkout_session(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+    product = load_product_by_slug( slug )
     domain_url = getattr(settings, 'DOMAIN_URL')
     stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
 
@@ -62,8 +75,8 @@ def create_checkout_session(request, slug):
                 {
                     "name": product.name,
                     "quantity": 1,
-                    "currency": product.currency,
-                    "amount": int(product.price * 100),
+                    "currency": 'usd',
+                    "amount": int(float(product.price) * 100),
                 },
             ],
         )
