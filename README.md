@@ -1,22 +1,16 @@
-# [Django & Stripe]() `Mini eCommerce`
-
-
-import products
-
+# Django & Stripe `Mini eCommerce`
 
 > Features:
 
+- ✅ [Soft UI Design](https://www.creative-tim.com/product/soft-ui-design-system?AFFILIATE=128200) (Free Version) by `Creative-Tim`
 - ✅ Powered by `Django` & `Stripe`
 - ✅ NO database, NO authentication
 - ✅ Automatic Products discovery from [templates\products](./products/templates/products) directory 
   - [JSON Format](./products/templates/products/product-air-zoom-pegasus.json) (sample) 
-- ✅ UI Kit: **Soft UI Kit** (Free Version) by **Creative-Tim**
-- ✅ `Deployment`: **Docker**
 
 <br />
 
-## ✨ Create .env
-<br />
+## ✨ Create `.env` using provided `env.sample`
 
 > 👉 Add `.env` file in your projects root directory and add the following credentials
 
@@ -27,19 +21,6 @@ STRIPE_SECRET_KEY=
 STRIPE_PUBLISHABLE_KEY=
 DOMAIN_URL=
 ```
-
-## ✨ Start the app in `Docker`
-
-
-<br />
-
-> 👉 Start the APP in `Docker`
-
-```bash
-$ docker-compose up --build 
-```
-
-Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
@@ -55,14 +36,16 @@ $ source env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-<br />
+<br /> 
 
-
-> 👉 Start the App
+> 👉 Migrate DB & Start the APP
 
 ```bash
+$ python manage.py migrate
 $ python manage.py runserver
 ```
+
+Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
@@ -142,3 +125,13 @@ The project has a simple structure, represented as bellow:
 ```
 
 <br />
+
+## ✨ Credits & Links
+
+- [Django Framework](https://www.djangoproject.com/) - The official website
+- [Stripe Dev Tools](https://stripe.com/docs/development) - official docs
+
+<br />
+
+---
+Django Stripe Sample - Free sample provided by [AppSeed](https://appseed.us).

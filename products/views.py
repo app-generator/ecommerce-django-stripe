@@ -1,3 +1,8 @@
+# -*- encoding: utf-8 -*-
+"""
+Copyright (c) 2019 - present AppSeed.us
+"""
+
 from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -5,7 +10,6 @@ import stripe
 from products.utils import get_products, Product, load_product, load_product_by_slug
 
 stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
-# Create your views here.
 
 def index(request):
     # Collect Products
@@ -29,7 +33,6 @@ def index(request):
         'products': products
     }
     return render(request, 'ecommerce/index.html', context)
-
 
 def product_details(request, slug):
     product = load_product_by_slug( slug )
@@ -83,7 +86,6 @@ def create_checkout_session(request, slug):
         return JsonResponse({"sessionId": checkout_session["id"]})
     except Exception as e:
         return JsonResponse(error=str(e)), 403
-
 
 # pages
 

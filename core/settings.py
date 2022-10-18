@@ -24,13 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'S#perS3crEt_9999')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [] 
 
 # Application definition
 
@@ -41,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'products',
+ 
+    'products',                    # <-- Stripe Manager
 ]
 
 MIDDLEWARE = [
@@ -55,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ecommerce.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ecommerce.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -135,9 +134,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
-STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY", "")
-DOMAIN_URL = os.getenv("DOMAIN_URL", "http://127.0.0.1:8000/")
+
+############################################################
+## Stripe Settings
+############################################################
+
+STRIPE_SECRET_KEY      = os.getenv("STRIPE_SECRET_KEY", None)
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY", None)
+DOMAIN_URL             = os.getenv("DOMAIN_URL", "http://127.0.0.1:8000/")
 
 STRIPE_IS_ACTIVE = False
 if STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY:
