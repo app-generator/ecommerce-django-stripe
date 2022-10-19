@@ -28,9 +28,16 @@ https://user-images.githubusercontent.com/51070104/196485430-1fdbc67d-b532-4b5c-
 
 ## ✨ Quick Start
 
+> 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
+
+```bash
+$ git clone https://github.com/app-generator/sample-django-stripe.git
+$ cd sample-django-stripe
+```
+
 <br />
 
-> 👉 **Step 1** - Create `.env` using provided `env.sample`
+> 👉 **Step 2** - Create `.env` using provided `env.sample`
 
  Add `.env` file in your projects root directory and add the following credentials
 
@@ -44,7 +51,7 @@ DOMAIN_URL=
 
 <br />
 
-> 👉 **Step 2** - Install dependencies
+> 👉 **Step ** - Install dependencies
 
 ```bash
 $ python -m venv env
@@ -54,7 +61,7 @@ $ pip install -r requirements.txt
 
 <br /> 
 
-> 👉 **Step 3** - Migrate DB & Start the APP
+> 👉 **Step 4** - Migrate DB & Start the APP
 
 ```bash
 $ python manage.py migrate
@@ -65,7 +72,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-> 👉 **Step 4** - Access the products and initiate a payment
+> 👉 **Step 5** - Access the products and initiate a payment
 
 **IMPORTANT**: Make sure your Stripe account is running in `TEST Mode` and Use Test CC provided by Stripe:
 
@@ -74,7 +81,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ **Step 5** - Create a new Product
+## ✨ **Step 6** - Create a new Product
 
 - Go to `products/templates/products` directory
 - Create a new `JSON` file with data:
