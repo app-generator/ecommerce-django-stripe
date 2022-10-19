@@ -51,7 +51,7 @@ DOMAIN_URL=
 
 <br />
 
-> 👉 **Step ** - Install dependencies
+> 👉 **Step 3** - Install dependencies
 
 ```bash
 $ python -m venv env
