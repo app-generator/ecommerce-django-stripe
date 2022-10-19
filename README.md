@@ -1,4 +1,4 @@
-# [Django & Stripe](https://youtu.be/Ui3YZ0R1weg) `Mini eCommerce`
+# [Django & Stripe](https://blog.appseed.us/django-stripe-mini-ecommerce/) `Mini eCommerce`
 
 Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django**.
 
@@ -161,4 +161,4 @@ The project has a simple structure, represented as bellow:
 <br />
 
 ---
-**[Django & Stripe](https://youtu.be/Ui3YZ0R1weg) Mini eCommerce** - Free sample provided by [AppSeed](https://appseed.us).
+**[Django & Stripe](https://blog.appseed.us/django-stripe-mini-ecommerce/) Mini eCommerce** - Free sample provided by [AppSeed](https://appseed.us).
