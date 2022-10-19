@@ -1,0 +1,111 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+  {% include "includes/navigation-light.html" %}
+
+    <section class="py-sm-7 py-5 position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <h4 class="mb-4">
+                        <a href="#">
+                          Stripe Products list
+                        </a>
+                    </h4>
+                    <div class="d-block mb-3">
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-info text-nowrap mb-0">Get products from Stripe</button>
+                        </form>
+                    </div> 
+                    {% if productdict %}
+                    {% for product in productdict %}                    
+                        <div class="mb-3">  
+                            <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                    <div data-bs-toggle="collapse" href="#stripe{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="stripe{{forloop.counter}}" class="col-lg-3 me-auto">
+                                        <p class="lead text-dark pt-1 mb-0">Products {{forloop.counter}}</p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="nav-wrapper position-relative end-0">
+                                            <ul class="nav nav-pills nav-fill flex-row p-1" role="tablist">
+                                                <li class="nav-item">
+                                                <a class="nav-link mb-0 px-0 py-1 active" href="{% url 'create_product' %}">
+                                                    <i class="fas fa-plus text-sm me-2"></i> Create
+                                                </a>
+                                                </li>
+                                                {% comment %} <li class="nav-item">
+                                                <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#code-header-1" role="tab" aria-controls="code" aria-selected="false">
+                                                    <i class="fas fa-code text-sm me-2"></i> Code
+                                                </a>
+                                                </li> {% endcomment %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="stripe{{forloop.counter}}" class="tab-pane collapse" id="code-header-1">
+                                <div class="position-relative p-4 pb-2">
+                                    <pre id="beautified">
+                                        {{product}}
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-6 mx-auto">
+                    <h4 class="mb-5">
+                        <a href="#">
+                          Local Products list
+                        </a>
+                    </h4>
+                    {% if local_products %}
+                    {% for local_product in local_products %}                    
+                        <div class="mb-3">  
+                            <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                    <div data-bs-toggle="collapse" href="#local{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="local{{forloop.counter}}"  class="col-lg-3 me-auto">
+                                        <p class="lead text-dark pt-1 mb-0">Products {{forloop.counter}}</p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="nav-wrapper position-relative end-0">
+                                            <ul class="nav nav-pills nav-fill flex-row p-1" role="tablist">
+                                                {% comment %} <li class="nav-item">
+                                                    <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#preview-header-1" role="tab" aria-controls="preview" aria-selected="true">
+                                                        <i class="fas fa-plus text-sm me-2"></i> Create
+                                                    </a>
+                                                </li> {% endcomment %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link mb-0 px-0 py-1 active ms-2" href="{% url 'update_product' token="prod_MdprMpcD5JvLix" %}">
+                                                        <i class="fas fa-edit text-sm me-2"></i> Edit
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="local{{forloop.counter}}" class="tab-pane collapse" id="code-header-1">
+                                <div class="position-relative p-4 pb-2">
+                                    <pre id="beautified">
+                                        {{local_product}}
+                                    </pre>
+                                    <textarea class="form-control" style="height: 500px;">
+                                        {{local_product}}
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div> 
+    </section>
+
+{% endblock content %}

@@ -3,13 +3,19 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+import json
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import stripe
-from products.utils import get_products, Product, load_product, load_product_by_slug
+from products.utils import get_product, Product, load_product, load_product_by_slug, load_json_product
+
+from stripe_python import get_products
 
 stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
+
+STRIPE_KEY = getattr(settings, 'STRIPE_SECRET_KEY')
+OUTPUT_FILE = 'products/templates/products/products.json' 
 
 def index(request):
     # Collect Products
@@ -17,7 +23,7 @@ def index(request):
     featured_product = None
     
     # Scan all JSONs in `templates/products`
-    for aJsonPath in get_products():  
+    for aJsonPath in get_product():  
         if 'featured.json' in aJsonPath:
             continue
 
@@ -86,6 +92,65 @@ def create_checkout_session(request, slug):
         return JsonResponse({"sessionId": checkout_session["id"]})
     except Exception as e:
         return JsonResponse(error=str(e)), 403
+
+def load_product_json(request):
+    if request.user.is_superuser:
+        json_data = []
+
+        # load stripe product
+        if request.method == "POST":
+            products = stripe.Product.list(expand = ['data.default_price'])
+            productdict = []
+            for product in products:
+                dict= {}
+                dict['id'] = product['id']
+                dict['name'] = product['name']
+                dict['description'] = product['description']
+                dict['images'] = product['images']
+                dict['price_default'  ] = { product["default_price"]["id"]: product["default_price"]["unit_amount"]/100}
+            
+                all_prices = stripe.Price.list(product=product["id"]).data
+                pricedict = {}
+
+                for price in all_prices:
+                    pricedict[price["id"]] = price["unit_amount"] / 100
+                dict['prices'] = pricedict
+                productdict.append(dict)
+            
+            for product in productdict:
+                json_product = json.dumps( {"data": product}, indent=4, separators=(',', ': ') )
+                json_data.append(json_product)
+
+        # load local product
+        local_products = []
+        for aJsonPath in get_product():  
+            if 'featured.json' in aJsonPath:
+                continue
+            local_json = load_json_product(aJsonPath)
+            local_products.append(json.dumps( {"data": local_json}, indent=4, separators=(',', ': ') ))
+        
+        context = {
+            'productdict': json_data,
+            'local_products': local_products
+        }
+        return render(request, 'ecommerce/create-product.html', context)
+    else:
+        return redirect('/')
+
+def create_new_product(request):
+    get_products(STRIPE_KEY, OUTPUT_FILE)
+    return redirect('/load-product')
+
+def update_product(request, token):
+    with open('products/templates/products/products.json', 'r+') as f:
+        data = json.load(f)
+        for dt in data['data']:
+            if (dt['id'] == token):
+                dt['name'] = "Honda Sevic Sedan" 
+        f.seek(0)
+        json.dump(data, f, indent=4)
+        f.truncate()  
+    return redirect('/load-product')
 
 # pages
 

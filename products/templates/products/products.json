@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "id": "prod_Mdq6AVJsC9YBCN",
+            "name": "Shoes",
+            "description": "shoes",
+            "images": [
+                "https://files.stripe.com/links/MDB8YWNjdF8xTDdpY25LenQ5V284UGFMfGZsX3Rlc3RfT01jZkFQQU1oSHRnOE91SkoyanZpQWpT00fGdnn1sT"
+            ],
+            "price_default": {
+                "price_1LuYQTKzt9Wo8PaLgF0LBrU6": 300.0
+            },
+            "prices": {
+                "price_1LuYQTKzt9Wo8PaLgF0LBrU6": 300.0
+            }
+        },
+        {
+            "id": "prod_MdprMpcD5JvLix",
+            "name": "Honda Sevic Sedan",
+            "description": "test product",
+            "images": [
+                "https://files.stripe.com/links/MDB8YWNjdF8xTDdpY25LenQ5V284UGFMfGZsX3Rlc3RfRmh2NzcwTUpFV3FCS1RKN1piR0FtcHBs00EGiQYBm3"
+            ],
+            "price_default": {
+                "price_1LuYBZKzt9Wo8PaLH4CuR9Tp": 200.0
+            },
+            "prices": {
+                "price_1LuYBZKzt9Wo8PaLH4CuR9Tp": 200.0
+            }
+        }
+    ]
+}

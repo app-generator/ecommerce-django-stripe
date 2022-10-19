@@ -11,6 +11,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name="products_index"),
     path('product/<str:slug>/', views.product_details, name='product_details'),
+    path('load-product/', views.load_product_json, name='load_product'),
+    path('create-product/', views.create_new_product, name='create_product'),
+    path('update-product/<str:token>/', views.update_product, name='update_product'),
     path('create-checkout-session/<str:slug>/', views.create_checkout_session, name="create-checkout-session"),
     path('success/', views.success, name="success"),
     path('cancelled/', views.cancelled, name="cancelled"),

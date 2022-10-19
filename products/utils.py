@@ -32,7 +32,7 @@ def get_files( aPath, ext='html' ):
             matches.append( item )
     return matches
 
-def get_products( ):
+def get_product( ):
     return get_files( get_products_dir(), 'json' )
 
 def get_slug( aPath, aExt='json' ):
@@ -41,13 +41,24 @@ def get_slug( aPath, aExt='json' ):
         return tail.replace('.' + aExt, '') # remove extension
     return None
 
+def load_json_product( aJSONPath ): 
+    f = open(aJSONPath, 'r')
+    if not f:
+        return None   
+    
+    # Read Product Info    
+    data = json.load( f )
+
+    return data
+
 def load_product( aJSONPath ): 
     f = open(aJSONPath, 'r')
     if not f:
         return None   
+    
     # Read Product Info    
     data = json.load( f )
-
+    
     if not data:
         return None 
 
