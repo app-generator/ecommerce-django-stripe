@@ -81,7 +81,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ **Step 6** - Create a new Product
+## ✨ Create a new Product
 
 - Go to `products/templates/products` directory
 - Create a new `JSON` file with data:
