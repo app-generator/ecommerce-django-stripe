@@ -7,6 +7,7 @@ import os, fnmatch, json
 from core.settings import BASE_DIR
 
 class Product:
+    id       = ''
     name     = ''
     price    = 0
     currency = ''
@@ -14,6 +15,7 @@ class Product:
     short_description = ''
     full_description = ''
     slug     = '' 
+    images   = ''
 
 def get_templates_dir():
     return os.path.join(BASE_DIR, 'products/templates' )
@@ -61,7 +63,7 @@ def load_product( aJSONPath ):
     
     if not data:
         return None 
-
+    
     product = Product()
 
     product.name  = data["name"] 
@@ -70,9 +72,18 @@ def load_product( aJSONPath ):
     product.short_description = data["short_description"]
     product.full_description  = data["full_description"]
     product.slug  = get_slug( aJSONPath )
+    try:
+        product.images = data['images']
+        product.id = data['id']
+    except:
+        product.id = get_slug( aJSONPath )
 
     return product
 
 def load_product_by_slug( aSlug ):
     aJSONPath = get_product_path( aSlug + '.json' )
+    return load_product( aJSONPath )
+
+def load_product_by_id( id ):
+    aJSONPath = get_product_path( id + '.json' )
     return load_product( aJSONPath )

@@ -68,10 +68,17 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card card-plain card-blog">
               <div class="card-image border-radius-lg position-relative">
+                {% if product.images %}
+                <a href="{% url 'product_details' product.slug %}">
+                  <img class="w-100 border-radius-lg move-on-hover shadow" 
+                       src="{{product.images}}">
+                </a>
+                {% else %}
                 <a href="{% url 'product_details' product.slug %}">
                   <img class="w-100 border-radius-lg move-on-hover shadow" 
                        src="/static/products/{{ product.slug }}/card.jpg">
                 </a>
+                {% endif %}
               </div>
               <div class="card-body px-0">
                 <h5>
