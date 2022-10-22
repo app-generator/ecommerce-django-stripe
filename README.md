@@ -100,6 +100,18 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
   - The new product should be listed in the `home` page
   - Product page is available at address:
     - `http://127.0.0.1:8000/product/<SLUG>/` where the SLUG is the name of the JSON file 
+
+
+<br />
+
+## ✨ Load and create product from stripe
+
+
+- Go to `Create Product` route in `Products` dropdown [You must be a superuser] 
+- On the left side there should be a button `Get Products From Stripe` this button will pull all the products associated with the stripe account. [demo](./products/static/products/demo/load-stripe-product.png)
+  - There will be product list, you can create a product by clicking the `Create` button. [demo](./products/static/products/demo/create-product.png)
+- On the right side you will see the local product list and a button `Edit`.
+  - You can edit a product from here. [ID is not editable] [demo](./products/static/products/demo/edit-product.png)
   
 <br />
 
