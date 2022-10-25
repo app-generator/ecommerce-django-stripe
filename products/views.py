@@ -3,13 +3,20 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+import json
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import stripe
-from products.utils import get_products, Product, load_product, load_product_by_slug
+from products.utils import get_product, Product, load_product, load_product_by_slug, load_json_product, load_product_by_id
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib import messages
+from stripe_python import get_products
 
 stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
+
+STRIPE_KEY = getattr(settings, 'STRIPE_SECRET_KEY')
+OUTPUT_FILE = 'products/templates/products/products.json' 
 
 def index(request):
     # Collect Products
@@ -17,7 +24,7 @@ def index(request):
     featured_product = None
     
     # Scan all JSONs in `templates/products`
-    for aJsonPath in get_products():  
+    for aJsonPath in get_product():  
         if 'featured.json' in aJsonPath:
             continue
 
@@ -78,7 +85,7 @@ def create_checkout_session(request, slug):
                 {
                     "name": product.name,
                     "quantity": 1,
-                    "currency": 'usd',
+                    "currency": product.currency,
                     "amount": int(float(product.price) * 100),
                 },
             ],
@@ -86,6 +93,100 @@ def create_checkout_session(request, slug):
         return JsonResponse({"sessionId": checkout_session["id"]})
     except Exception as e:
         return JsonResponse(error=str(e)), 403
+
+@staff_member_required
+def load_product_json(request):
+    json_data = []
+
+    # load stripe product
+    if request.method == "POST":
+        products = stripe.Product.list(expand = ['data.default_price'])
+        productdict = []
+        for product in products:
+            dict= {}
+            dict['id'] = product['id']
+            dict['name'] = product['name']
+            dict['price'] = product["default_price"]["unit_amount"]/100
+            dict['currency'] = product["default_price"]["currency"]
+            dict['short_description'] = product["description"][0:50]
+            dict['full_description'] = product["description"]
+            dict['info'] = product["description"][0:30]
+
+            for index, image in enumerate(product['images']):
+                dict['img_main'] = image
+
+            dict['img_card'] = ''
+            dict['img_1'] = ''
+            dict['img_2'] = ''
+            dict['img_3'] = ''
+
+            productdict.append(dict)
+        
+        for product in productdict:
+            json_product = json.dumps( product, indent=4, separators=(',', ': ') )
+            json_data.append(json_product)
+
+    # load local product
+    local_products = []
+    for aJsonPath in get_product():  
+        if 'featured.json' in aJsonPath:
+            continue
+        local_json = load_json_product(aJsonPath)
+        local_products.append(json.dumps( local_json, indent=4, separators=(',', ': ') ))
+    
+    context = {
+        'productdict': json_data,
+        'local_products': local_products
+    }
+    return render(request, 'ecommerce/create-product.html', context)
+
+
+@staff_member_required
+def create_new_product(request):
+    if request.method == 'POST':
+        product = request.POST.get('product')
+        name = json.loads(product)['name']
+        slug = name.lower().replace(' ', '-')
+
+        try:
+            products = load_product_by_slug( slug )
+            if products:
+                return redirect('/load-product')
+        except:
+            outputFile = f'products/templates/products/{slug}.json'
+            with open(outputFile, "w") as outfile: 
+                outfile.write( product )
+                outfile.close()
+            return redirect('/load-product')
+    else:
+        return redirect('/load-product')
+
+
+@staff_member_required
+def update_product(request, slug):
+    if request.method == 'POST':
+        product = request.POST.get('product')
+        id = json.loads(product)['id']
+        name = json.loads(product)['name']
+
+        try:
+            products = load_product_by_slug( slug )
+            if (products.id == id) and (products.name == name):
+                outputFile = f'products/templates/products/{slug}.json'
+                with open(outputFile, "r+") as outfile:
+                    outfile.seek(0)
+                    outfile.write(product)
+                    outfile.truncate()
+                return redirect('/load-product')
+            else:
+                messages.error(request, "You can't update product id or name!")
+                return redirect('/load-product')
+        except:
+            messages.error(request, "You can't update product id or name!")
+            return redirect('/load-product')  
+    else:
+        return redirect('/load-product')
+
 
 # pages
 

@@ -44,11 +44,13 @@
                   </div>
                   Samples
                 </h6>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'load_product' %}" class="dropdown-item border-radius-md">
+                  Create Products
+                </a>
+                {% endif %}
                 <a href="/" class="dropdown-item border-radius-md">
                   All Products
-                </a>
-                <a href="{% url 'product_details' 'product-air-zoom-pegasus' %}" class="dropdown-item border-radius-md">
-                  Nike Air Zoom
                 </a>
               </div>
               <div class="d-lg-none">
