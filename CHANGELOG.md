@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.2] 2022-10-25
+### Improvements
+
+- Products pulled from Stripe
+  - Available for `Superusers`
+
 ## [1.0.1] 2022-10-18
 ### Improvements
 
