@@ -20,9 +20,9 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | ❌ | **Docker** | - |
 | ❌ | **CI/CD** | Render Deployment Platform |
 
-<br />
+<br /> 
 
-https://user-images.githubusercontent.com/51070104/196485430-1fdbc67d-b532-4b5c-b358-11baeee43437.mp4
+https://user-images.githubusercontent.com/51070104/197837019-4634377f-c61f-4df1-9675-1365556be37f.mp4
 
 <br />
 
