@@ -108,7 +108,6 @@ def load_product_json(request):
             dict['name'] = product['name']
             dict['price'] = product["default_price"]["unit_amount"]/100
             dict['currency'] = product["default_price"]["currency"]
-            dict['short_description'] = product["description"][0:50]
             dict['full_description'] = product["description"]
             dict['info'] = product["description"][0:30]
 
