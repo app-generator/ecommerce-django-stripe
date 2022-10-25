@@ -1,8 +1,13 @@
 {
+    "id": "prod_MdkJX6eD_FAKE_PRODUCT",
     "name": "Nike Dynamo Go FlyEase",
     "price": 49,
     "currency": "usd",
     "info": "Baby/Toddler Easy On/Off Shoes",
-    "short_description": "A workhorse built to help power you through every mile of the race.",
-    "full_description": "Easy, snug and built for any-time play the Nike Dynamo Go FlyEase will be your little one's next fave. What we love most is that kids can stomp down on the collapsible heel and slip in quick and easy. And if they're not quite ready to do it themselves, you can show them how it works so they can be free and independent! It's also soft and plush in the best places, so the fun never stops."
+    "full_description": "Easy, snug and built for any-time play the Nike Dynamo Go FlyEase will be your little one's next fave. What we love most is that kids can stomp down on the collapsible heel and slip in quick and easy. And if they're not quite ready to do it themselves, you can show them how it works so they can be free and independent! It's also soft and plush in the best places, so the fun never stops.",
+    "img_main": "https://github.com/app-generator/sample-django-stripe/blob/main/media/nike-go-flyease/cover.jpg?raw=true",
+    "img_card": "https://github.com/app-generator/sample-django-stripe/blob/main/media/nike-go-flyease/card.jpg?raw=true",
+    "img_1": "",
+    "img_2": "",
+    "img_3": ""    
 }
