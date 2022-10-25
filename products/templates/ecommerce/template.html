@@ -15,8 +15,12 @@
   <!-- End Navbar -->
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
-    <div class="page-header section-height-75" 
+    <div class="page-header section-height-75"
+      {% if product.img_card %}
+          style="background-image: url('{{product.img_card}}');"
+      {% else %}
          style="background-image: url('/static/products/{{ product.slug }}/cover.jpg');"
+      {% endif %}
       >
       <span class="mask bg-gradient-info opacity-6">
       </span>
@@ -126,7 +130,11 @@
           <div class="card shadow-lg">
             <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
               <div class="d-block blur-shadow-image">
+                {% if product.img_main %}
+                <img src="{{product.img_main}}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                {% else %}
                 <img src="/static/products/{{ product.slug }}/card.jpg" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                {% endif %}
               </div>
               <div class="colored-shadow" style="background-image: url(&quot;https://images.unsplash.com/photo-1604446062885-9f29f136fe87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3300&amp;q=80&quot;);"></div>
             </div>

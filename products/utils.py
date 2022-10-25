@@ -15,7 +15,11 @@ class Product:
     short_description = ''
     full_description = ''
     slug     = '' 
-    images   = ''
+    img_main   = ''
+    img_card = ''
+    img_1 = ''
+    img_2 = ''
+    img_3 = ''
 
 def get_templates_dir():
     return os.path.join(BASE_DIR, 'products/templates' )
@@ -68,12 +72,17 @@ def load_product( aJSONPath ):
 
     product.name  = data["name"] 
     product.info  = data["info"]
+    product.currency = data["currency"]
     product.price = int( data["price"] )
     product.short_description = data["short_description"]
     product.full_description  = data["full_description"]
     product.slug  = get_slug( aJSONPath )
     try:
-        product.images = data['images']
+        product.img_main = data['img_main']
+        product.img_card = data['img_card']
+        product.img_1 = data['img_1']
+        product.img_2 = data['img_2']
+        product.img_3 = data['img_3']
         product.id = data['id']
     except:
         product.id = get_slug( aJSONPath )

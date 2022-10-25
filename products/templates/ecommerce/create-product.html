@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load string_to_json %}
 
 {% block content %}
 
@@ -24,8 +25,8 @@
                         <div class="mb-3">  
                             <div class="container border-bottom">
                                 <div class="row justify-space-between py-2">
-                                    <div data-bs-toggle="collapse" href="#stripe{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="stripe{{forloop.counter}}" class="col-lg-3 me-auto">
-                                        <p class="lead text-dark pt-1 mb-0">Products {{forloop.counter}}</p>
+                                    <div data-bs-toggle="collapse" href="#stripe{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="stripe{{forloop.counter}}" class="col-lg-3 me-auto w-75">
+                                        <p class="lead text-dark pt-1 mb-0">{{product|product_name}}</p>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="nav-wrapper position-relative end-0">
@@ -89,8 +90,8 @@
                         <div class="mb-3">  
                             <div class="container border-bottom">
                                 <div class="row justify-space-between py-2">
-                                    <div data-bs-toggle="collapse" href="#local{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="local{{forloop.counter}}"  class="col-lg-3 me-auto">
-                                        <p class="lead text-dark pt-1 mb-0">Products {{forloop.counter}}</p>
+                                    <div data-bs-toggle="collapse" href="#local{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="local{{forloop.counter}}"  class="col-lg-3 me-auto w-75">
+                                        <p id="product-name" class="lead text-dark pt-1 mb-0">{{local_product|product_name}}</p>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="nav-wrapper position-relative end-0">
@@ -119,7 +120,7 @@
                                 </div>
                             </div>
                             <div id="edit{{forloop.counter}}" class="tab-pane collapse" id="code-header-1">
-                                <form method="post" action="{% url 'update_product' %}">
+                                <form method="post" action="{% url 'update_product' slug=local_product|product_slug %}">
                                     {% csrf_token %}
                                     <div class="position-relative p-4 pb-2">
                                         <textarea name="product" id="myTextArea" class="form-control" style="height: 320px;">

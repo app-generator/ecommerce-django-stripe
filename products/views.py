@@ -85,7 +85,7 @@ def create_checkout_session(request, slug):
                 {
                     "name": product.name,
                     "quantity": 1,
-                    "currency": 'usd',
+                    "currency": product.currency,
                     "amount": int(float(product.price) * 100),
                 },
             ],
@@ -113,7 +113,12 @@ def load_product_json(request):
             dict['info'] = product["description"][0:30]
 
             for index, image in enumerate(product['images']):
-                dict['images'] = image
+                dict['img_main'] = image
+
+            dict['img_card'] = ''
+            dict['img_1'] = ''
+            dict['img_2'] = ''
+            dict['img_3'] = ''
 
             productdict.append(dict)
         
@@ -140,34 +145,44 @@ def load_product_json(request):
 def create_new_product(request):
     if request.method == 'POST':
         product = request.POST.get('product')
-        id = json.loads(product)['id']
+        name = json.loads(product)['name']
+        slug = name.lower().replace(' ', '-')
 
-        outputFile = f'products/templates/products/{id}.json'
-        with open(outputFile, "w") as outfile: 
-            outfile.write( product )
-            outfile.close()
-        return redirect('/load-product')
+        try:
+            products = load_product_by_slug( slug )
+            if products:
+                return redirect('/load-product')
+        except:
+            outputFile = f'products/templates/products/{slug}.json'
+            with open(outputFile, "w") as outfile: 
+                outfile.write( product )
+                outfile.close()
+            return redirect('/load-product')
     else:
         return redirect('/load-product')
 
 
 @staff_member_required
-def update_product(request):
+def update_product(request, slug):
     if request.method == 'POST':
         product = request.POST.get('product')
         id = json.loads(product)['id']
+        name = json.loads(product)['name']
 
         try:
-            products = load_product_by_id( id )
-            if products.id == id:
-                outputFile = f'products/templates/products/{id}.json'
+            products = load_product_by_slug( slug )
+            if (products.id == id) and (products.name == name):
+                outputFile = f'products/templates/products/{slug}.json'
                 with open(outputFile, "r+") as outfile:
                     outfile.seek(0)
                     outfile.write(product)
                     outfile.truncate()
                 return redirect('/load-product')
+            else:
+                messages.error(request, "You can't update product id or name!")
+                return redirect('/load-product')
         except:
-            messages.error(request, "You can't update product id!")
+            messages.error(request, "You can't update product id or name!")
             return redirect('/load-product')  
     else:
         return redirect('/load-product')
