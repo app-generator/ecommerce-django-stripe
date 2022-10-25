@@ -107,7 +107,6 @@ venv.bak/
 /node_modules/
 /avatar/
 /qr/
-/media/
 /result/
 /staticfiles/
 local.py
