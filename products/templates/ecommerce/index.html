@@ -19,7 +19,14 @@
           <div class="row py-lg-7 py-5">
             <div class="col-lg-3 col-md-5 position-relative my-auto">
               <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" 
-                   src="/static/products/{{ featured.slug }}/card.jpg">
+              
+              {% if featured.img_card %}   
+                src="{{ featured.img_card }}"
+              {% else %}  
+                src="{{ featured.img_main }}"
+              {% endif %}
+
+                   >
             </div>
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mt-sm-0 mt-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
@@ -60,67 +67,92 @@
             Latest PRODUCTS
           </h3>
         </div>
+        <hr />
       </div>
       <div class="row"> 
 
-        {% for product in products %}
-      
-          <div class="col-lg-3 col-sm-6">
-            <div class="card card-plain card-blog">
-              <div class="card-image border-radius-lg position-relative">
-                {% if product.img_main %}
-                <a href="{% url 'product_details' product.slug %}">
-                  <img class="w-100 border-radius-lg move-on-hover shadow" 
-                       src="{{product.img_main}}">
-                </a>
-                {% else %}
-                <a href="{% url 'product_details' product.slug %}">
-                  <img class="w-100 border-radius-lg move-on-hover shadow" 
-                       src="/static/products/{{ product.slug }}/card.jpg">
-                </a>
-                {% endif %}
-              </div>
-              <div class="card-body px-0">
-                <h5>
-                  <a href="{% url 'product_details' product.slug %}" class="text-dark font-weight-bold">
-                    {{ product.name }} - ${{ product.price }}
-                  </a>
-                </h5>
-                <p>
-                  {{ product.info }}
-                </p>
-                <a href="{% url 'product_details' product.slug %}" class="text-info icon-move-right">
-                  See Product
-                  <i class="fas fa-arrow-right text-sm"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        
-        {% endfor %}
+        {% if products %}
 
-        <div class="col-lg-3 col-md-12 col-12">
-          <div class="card card-blog card-background">
-            <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1554189097-ffe88e998a2b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80')"></div>
-            <div class="card-body">
-              <div class="content-left text-left my-auto py-4">
-                <a href="javascript:;">
-                  <h2 class="card-title text-white">
-                    Simple eCommerce App
-                  </h2>
-                  <p class="card-description text-white">
-                    The products are loaded from static files (JSON format) and presented to the user using a modern UI Kit
+          {% for product in products %}
+        
+            <div class="col-lg-3 col-sm-6">
+              <div class="card card-plain card-blog">
+                <div class="card-image border-radius-lg position-relative">
+                  {% if product.img_main %}
+                  <a href="{% url 'product_details' product.slug %}">
+                    <img class="w-100 border-radius-lg move-on-hover shadow" 
+                        src="{{product.img_main}}">
+                  </a>
+                  {% else %}
+                  <a href="{% url 'product_details' product.slug %}">
+                    <img class="w-100 border-radius-lg move-on-hover shadow" 
+                        src="/static/products/{{ product.slug }}/card.jpg">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="card-body px-0">
+                  <h5>
+                    <a href="{% url 'product_details' product.slug %}" class="text-dark font-weight-bold">
+                      {{ product.name }} - ${{ product.price }}
+                    </a>
+                  </h5>
+                  <p>
+                    {{ product.info }}
                   </p>
-                  <a target="_blank" href="https://github.com/app-generator/sample-django-stripe"  
-                     class="text-white icon-move-right">
-                    Read More 
+                  <a href="{% url 'product_details' product.slug %}" class="text-info icon-move-right">
+                    See Product
                     <i class="fas fa-arrow-right text-sm"></i>
                   </a>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          
+          {% endfor %}
+
+          <div class="col-lg-3 col-md-12 col-12">
+            <div class="card card-blog card-background">
+              <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1554189097-ffe88e998a2b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80')"></div>
+              <div class="card-body">
+                <div class="content-left text-left my-auto py-4">
+                  <a href="javascript:;">
+                    <h2 class="card-title text-white">
+                      Simple eCommerce App
+                    </h2>
+                    <p class="card-description text-white">
+                      The products are loaded from static files (JSON format) and presented to the user using a modern UI Kit
+                    </p>
+                    <a target="_blank" href="https://github.com/app-generator/sample-django-stripe"  
+                       class="text-white icon-move-right">
+                      Read More 
+                      <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>   
+
+        {% else %}  
+            
+          <div class="col-lg-12 col-sm-12">
+            <p class="lead">
+
+              {% if request.user.is_superuser %}
+
+                No products defined. <mark>Import <a href="{% url 'load_product' %}" class="text-primary">products</a> from Stripe.</mark>
+              
+              {% else %}
+
+                No products defined. <mark>Autenticate as <a class="text-primary" href="/admin/">superuser</a> to import products from Stripe.</mark>
+
+              {% endif %}
+
+            </p>    
+          </div>    
+
+        {% endif %}
+
+
 
       </div>
     </div>
