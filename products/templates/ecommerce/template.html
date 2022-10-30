@@ -15,7 +15,13 @@
   <!-- End Navbar -->
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
-    <div class="page-header section-height-75" style="background-image: url('{{product.img_main}}');">
+    <div class="page-header section-height-75" 
+    {% if product.img_card|first in 'http' %}
+      style="background-image: url('{{product.img_card}}');"
+    {% else %}
+      style="background-image: url('data:image/png;base64,{{product.img_card}}');"
+    {% endif %}
+    >
       <span class="mask bg-gradient-info opacity-6">
       </span>
       <div class="container">
@@ -125,9 +131,17 @@
             <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
               <div class="d-block blur-shadow-image">
                 {% if product.img_card %}
+                  {% if product.img_card|first in 'http' %}
                   <img src="{{product.img_card}}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                  {% else %}
+                  <img src="data:image/png;base64,{{product.img_card}}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                  {% endif %}
                 {% else %}
+                  {% if product.img_main|first in 'http'%}
                   <img src="{{product.img_main}}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                  {% else %}
+                  <img src="data:image/png;base64,{{product.img_main}}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                  {% endif %}
                 {% endif %}
               </div>
               <div class="colored-shadow" style="background-image: url(&quot;https://images.unsplash.com/photo-1604446062885-9f29f136fe87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3300&amp;q=80&quot;);"></div>

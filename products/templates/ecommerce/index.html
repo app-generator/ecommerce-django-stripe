@@ -20,10 +20,18 @@
             <div class="col-lg-3 col-md-5 position-relative my-auto">
               <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" 
               
-              {% if featured.img_card %}   
-                src="{{ featured.img_card }}"
+              {% if featured.img_card %} 
+                {% if featured.img_card|first in 'http' %}
+                  src="{{ featured.img_card }}"
+                {% else %}
+                  src="data:image/png;base64,{{ featured.img_card }}"
+                {% endif %} 
               {% else %}  
-                src="{{ featured.img_main }}"
+                {% if featured.img_main|first in 'http'%}
+                  src="{{ featured.img_main }}"
+                {% else %}
+                  src="data:image/png;base64,{{ featured.img_main }}"
+                {% endif %}
               {% endif %}
 
                    >
@@ -78,10 +86,15 @@
             <div class="col-lg-3 col-sm-6">
               <div class="card card-plain card-blog">
                 <div class="card-image border-radius-lg position-relative">
-                  {% if image %}
+                  {% if product.img_main %}
                   <a href="{% url 'product_details' product.slug %}">
+                    {% if product.img_main|first in 'http' %}
                     <img class="w-100 border-radius-lg move-on-hover shadow" 
-                        src="{{image}}">
+                        src="{{product.img_main}}">
+                    {% else %}
+                    <img class="w-100 border-radius-lg move-on-hover shadow" 
+                        src="data:image/png;base64,{{product.img_main}}">
+                    {% endif %}
                   </a>
                   {% else %}
                   <a href="{% url 'product_details' product.slug %}">

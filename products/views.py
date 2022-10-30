@@ -5,6 +5,7 @@ Copyright (c) 2019 - present AppSeed.us
 
 import json
 import os
+import re
 import base64
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -19,6 +20,7 @@ stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
 
 STRIPE_KEY = getattr(settings, 'STRIPE_SECRET_KEY')
 OUTPUT_FILE = 'products/templates/products/products.json' 
+
 
 def index(request):
     # Collect Products
@@ -36,13 +38,10 @@ def index(request):
         # Is Valid? Save the object
         if product:     
             products.append( product )
-
-    image = base64.b64decode(products[0].img_main)
-
+    
     context = {
         'featured': load_product_by_slug('featured'),
         'products': products,
-        'image': image
     }
     return render(request, 'ecommerce/index.html', context)
 
@@ -170,21 +169,48 @@ def create_new_product(request):
 def update_product(request, slug):
     if request.method == 'POST':
         product = request.POST.get('product')
+        featured = request.POST.get('featured')
 
-        main_image = request.FILES.get('main_image', '')
+
+        # main image
+        main_image = request.FILES.get('main_image', "")
         main_img = ''
         if main_image:
             main_img = base64.b64encode(main_image.read()).decode()
         else:
             main_img = request.POST.get('main_img_link')
         
-
-        card_image = request.FILES.get('card_image', '')
+        # card image
+        card_image = request.FILES.get('card_image', "")
         card_img = ''
-        if card_img:
+        if card_image:
             card_img = base64.b64encode(card_image.read()).decode()
         else:
             card_img = request.POST.get('card_img_link')
+        
+        # image 1
+        image_1 = request.FILES.get('image_1', json.loads(product)['img_1'])
+        img_1 = ''
+        if image_1:
+            img_1 = base64.b64encode(image_1.read()).decode()
+        else:
+            img_1 = request.POST.get('img1_link')
+
+        # image 2
+        image_2 = request.FILES.get('image_2', json.loads(product)['img_2'])
+        img_2 = ''
+        if image_2:
+            img_2 = base64.b64encode(image_2.read()).decode()
+        else:
+            img_2 = request.POST.get('img2_link')
+
+        # image 3
+        image_3 = request.FILES.get('image_3', json.loads(product)['img_3'])
+        img_3 = ''
+        if image_3:
+            img_3 = base64.b64encode(image_3.read()).decode()
+        else:
+            img_3 = request.POST.get('img3_link')
 
         prod = {
             'id': json.loads(product)['id'],
@@ -195,13 +221,17 @@ def update_product(request, slug):
             'info': request.POST.get('info'),
             'img_main': main_img,
             'img_card': card_img,
-            'img_1': request.POST.get('image_1'),
-            'img_2': request.POST.get('image_2'),
-            'img_3': request.POST.get('image_3'),
+            'img_1': img_1,
+            'img_2': img_2,
+            'img_3': img_3,
         }
 
         try:
-            outputFile = f'products/templates/products/{slug}.json'
+            if featured:
+                outputFile = f'products/templates/products/featured.json'
+            else:
+                outputFile = f'products/templates/products/{slug}.json'
+
             with open(outputFile, "r+") as outfile:
                 outfile.seek(0)
                 outfile.write(json.dumps(prod, indent=4, separators=(',', ': ')))

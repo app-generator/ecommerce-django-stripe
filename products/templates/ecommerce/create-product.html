@@ -136,33 +136,33 @@
               <div class="nav-wrapper position-relative end-0">
                 <ul class="nav nav-pills nav-fill p-1 mb-3" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#main-tabs" role="tab" aria-controls="main" aria-selected="true">
+                    <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#main-tabs{{forloop.counter}}" role="tab" aria-controls="main" aria-selected="true">
                       Main Image
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#card-tabs" role="tab" aria-controls="card" aria-selected="false">
+                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#card-tabs{{forloop.counter}}" role="tab" aria-controls="card" aria-selected="false">
                       Card
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image1-tabs" role="tab" aria-controls="image1" aria-selected="false">
+                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image1-tabs{{forloop.counter}}" role="tab" aria-controls="image1" aria-selected="false">
                       Image 1
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image2-tabs" role="tab" aria-controls="image2" aria-selected="false">
+                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image2-tabs{{forloop.counter}}" role="tab" aria-controls="image2" aria-selected="false">
                       Image 2
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image3-tabs" role="tab" aria-controls="image3" aria-selected="false">
+                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#image3-tabs{{forloop.counter}}" role="tab" aria-controls="image3" aria-selected="false">
                       Image 3
                     </a>
                   </li>
                 </ul>
                 <div class="tab-content">
-                  <div id="main-tabs" class="tab-pane active">
+                  <div id="main-tabs{{forloop.counter}}" class="tab-pane active">
                     <div class="form-group">
                       <label for="main_image" class="form-label">Main Image</label>
                       <input class="form-control" type="file" name="main_image" id="">
@@ -172,7 +172,7 @@
                       <input class="form-control" type="url" value="{{local_product|product_main_image}}" name="main_img_link" id="">
                     </div>
                   </div>
-                  <div id="card-tabs" class="tab-pane"> 
+                  <div id="card-tabs{{forloop.counter}}" class="tab-pane"> 
                     <div class="form-group">
                       <label for="card_image" class="form-label">Card Image</label>
                       <input class="form-control" type="file" name="card_image" id="">
@@ -182,7 +182,7 @@
                       <input class="form-control" type="url" value="{{local_product|product_card_image}}" name="card_img_link" id="">
                     </div>
                   </div>
-                  <div id="image1-tabs" class="tab-pane"> 
+                  <div id="image1-tabs{{forloop.counter}}" class="tab-pane"> 
                     <div class="form-group">
                       <label for="image_1" class="form-label">Image 1</label>
                       <input class="form-control" type="file" name="image_1" id="">
@@ -192,7 +192,7 @@
                       <input class="form-control" type="url" value="{{local_product|product_image1}}" name="img1_link" id="">
                     </div>
                   </div>
-                  <div id="image2-tabs" class="tab-pane"> 
+                  <div id="image2-tabs{{forloop.counter}}" class="tab-pane"> 
                     <div class="form-group">
                       <label for="image_2" class="form-label">Image 2</label>
                       <input class="form-control" type="file" name="image_2" id="">
@@ -202,7 +202,7 @@
                       <input class="form-control" type="url" value="{{local_product|product_image2}}" name="img2_link" id="">
                     </div>
                   </div>
-                  <div id="image3-tabs" class="tab-pane"> 
+                  <div id="image3-tabs{{forloop.counter}}" class="tab-pane"> 
                     <div class="form-group">
                       <label for="image_3" class="form-label">Image 3</label>
                       <input class="form-control" type="file" name="image_3" id="">
@@ -229,6 +229,12 @@
                 <label for="info" class="form-label">Info</label>
                 <input class="form-control" value="{{local_product|product_info}}" type="text" name="info" id="">
               </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="featured" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Featured
+                </label>
+              </div> 
               <div class="d-block mb-3">
                 <button type="submit" class="btn btn-sm btn-outline-info text-nowrap mb-0">Edit</button>
               </div>
