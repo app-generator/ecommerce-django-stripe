@@ -78,10 +78,10 @@
             <div class="col-lg-3 col-sm-6">
               <div class="card card-plain card-blog">
                 <div class="card-image border-radius-lg position-relative">
-                  {% if product.img_main %}
+                  {% if image %}
                   <a href="{% url 'product_details' product.slug %}">
                     <img class="w-100 border-radius-lg move-on-hover shadow" 
-                        src="{{product.img_main}}">
+                        src="{{image}}">
                   </a>
                   {% else %}
                   <a href="{% url 'product_details' product.slug %}">

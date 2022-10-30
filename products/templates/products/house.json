@@ -1,0 +1,13 @@
+{
+    "id": "prod_MeE7O4SfpCKkjm",
+    "name": "House",
+    "currency": "usd",
+    "price": "2000.0",
+    "full_description": "Wooden house",
+    "info": "Wooden house",
+    "img_main": "https://files.stripe.com/links/MDB8YWNjdF8xTDdpY25LenQ5V284UGFMfGZsX3Rlc3RfVzJFT3J0a3Z4Smt0WjhQZnp5aWs2enFK00BKJFd5RE",
+    "img_card": "https://github.com/app-generator/ecommerce-django-stripe/issues/11",
+    "img_1": "",
+    "img_2": "",
+    "img_3": ""
+}

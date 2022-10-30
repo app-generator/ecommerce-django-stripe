@@ -4,6 +4,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import json
+import os
+import base64
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
@@ -35,9 +37,12 @@ def index(request):
         if product:     
             products.append( product )
 
+    image = base64.b64decode(products[0].img_main)
+
     context = {
         'featured': load_product_by_slug('featured'),
-        'products': products
+        'products': products,
+        'image': image
     }
     return render(request, 'ecommerce/index.html', context)
 
@@ -165,26 +170,59 @@ def create_new_product(request):
 def update_product(request, slug):
     if request.method == 'POST':
         product = request.POST.get('product')
-        id = json.loads(product)['id']
-        name = json.loads(product)['name']
+
+        main_image = request.FILES.get('main_image', '')
+        main_img = ''
+        if main_image:
+            main_img = base64.b64encode(main_image.read()).decode()
+        else:
+            main_img = request.POST.get('main_img_link')
+        
+
+        card_image = request.FILES.get('card_image', '')
+        card_img = ''
+        if card_img:
+            card_img = base64.b64encode(card_image.read()).decode()
+        else:
+            card_img = request.POST.get('card_img_link')
+
+        prod = {
+            'id': json.loads(product)['id'],
+            'name': json.loads(product)['name'],
+            'currency': json.loads(product)['currency'],
+            'price': request.POST.get('price'),
+            'full_description': request.POST.get('full_description'),
+            'info': request.POST.get('info'),
+            'img_main': main_img,
+            'img_card': card_img,
+            'img_1': request.POST.get('image_1'),
+            'img_2': request.POST.get('image_2'),
+            'img_3': request.POST.get('image_3'),
+        }
 
         try:
-            products = load_product_by_slug( slug )
-            if (products.id == id) and (products.name == name):
-                outputFile = f'products/templates/products/{slug}.json'
-                with open(outputFile, "r+") as outfile:
-                    outfile.seek(0)
-                    outfile.write(product)
-                    outfile.truncate()
-                return redirect('/load-product')
-            else:
-                messages.error(request, "You can't update product id or name!")
-                return redirect('/load-product')
+            outputFile = f'products/templates/products/{slug}.json'
+            with open(outputFile, "r+") as outfile:
+                outfile.seek(0)
+                outfile.write(json.dumps(prod, indent=4, separators=(',', ': ')))
+                outfile.truncate()
+            return redirect('/load-product')
         except:
             messages.error(request, "You can't update product id or name!")
             return redirect('/load-product')  
     else:
         return redirect('/load-product')
+
+
+@staff_member_required
+def delete_product(request, slug):
+    try:
+        outputFile = f'products/templates/products/{slug}.json'
+        os.remove(outputFile)
+        return redirect('/load-product')
+    except:
+        messages.error(request, "You can't delete the product.")
+        return redirect('/load-product')  
 
 
 # pages
