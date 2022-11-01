@@ -16,10 +16,18 @@
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
     <div class="page-header section-height-75" 
-    {% if product.img_card|first in 'http' %}
-      style="background-image: url('{{product.img_card}}');"
+    {% if product.img_card %}
+      {% if product.img_card|first in 'http' %}
+        style="background-image: url('{{product.img_card}}');"
+      {% else %}
+        style="background-image: url('data:image/png;base64,{{product.img_card}}');"
+      {% endif %}
     {% else %}
-      style="background-image: url('data:image/png;base64,{{product.img_card}}');"
+      {% if product.img_main|first in 'http' %}
+        style="background-image: url('{{product.img_main}}');"
+      {% else %}
+        style="background-image: url('data:image/png;base64,{{product.img_main}}');"
+      {% endif %}
     {% endif %}
     >
       <span class="mask bg-gradient-info opacity-6">

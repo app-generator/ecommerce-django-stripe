@@ -162,6 +162,7 @@ def create_new_product(request):
             outputFile = f'products/templates/products/{slug}.json'
             with open(outputFile, "w") as outfile: 
                 outfile.write( product )
+                messages.success(request, "Product added successfully!")
                 outfile.close()
             return redirect('/load-product')
     else:
@@ -180,40 +181,51 @@ def update_product(request, slug):
         main_img = ''
         if main_image:
             main_img = base64.b64encode(main_image.read()).decode()
-        else:
+        elif request.POST.get('main_img_link'):
             main_img = request.POST.get('main_img_link')
+        else:
+            main_img = json.loads(product)['img_main']
+
         
         # card image
         card_image = request.FILES.get('card_image', "")
         card_img = ''
         if card_image:
             card_img = base64.b64encode(card_image.read()).decode()
-        else:
+        elif request.POST.get('card_img_link'):
             card_img = request.POST.get('card_img_link')
+        else:
+            card_img = json.loads(product)['img_card']
         
         # image 1
-        image_1 = request.FILES.get('image_1', json.loads(product)['img_1'])
+        image_1 = request.FILES.get('image_1', "")
         img_1 = ''
         if image_1:
             img_1 = base64.b64encode(image_1.read()).decode()
-        else:
+        elif request.POST.get('img1_link'):
             img_1 = request.POST.get('img1_link')
+        else:
+            img_1 = json.loads(product)['img_1']
 
         # image 2
-        image_2 = request.FILES.get('image_2', json.loads(product)['img_2'])
+        image_2 = request.FILES.get('image_2', "")
         img_2 = ''
         if image_2:
             img_2 = base64.b64encode(image_2.read()).decode()
-        else:
+        elif request.POST.get('img2_link'):
             img_2 = request.POST.get('img2_link')
+        else:
+            img_2 = json.loads(product)['img_2']
 
         # image 3
-        image_3 = request.FILES.get('image_3', json.loads(product)['img_3'])
+        image_3 = request.FILES.get('image_3', "")
         img_3 = ''
         if image_3:
             img_3 = base64.b64encode(image_3.read()).decode()
-        else:
+        elif request.POST.get('img3_link'):
             img_3 = request.POST.get('img3_link')
+        else:
+            img_3 = json.loads(product)['img_3']
 
         prod = {
             'id': json.loads(product)['id'],
@@ -238,6 +250,7 @@ def update_product(request, slug):
             with open(outputFile, "r+") as outfile:
                 outfile.seek(0)
                 outfile.write(json.dumps(prod, indent=4, separators=(',', ': ')))
+                messages.success(request, 'Product updated!')
                 outfile.truncate()
             return redirect('/load-product')
         except:
@@ -252,6 +265,7 @@ def delete_product(request, slug):
     try:
         outputFile = f'products/templates/products/{slug}.json'
         os.remove(outputFile)
+        messages.success(request, "Product Deleted!")
         return redirect('/load-product')
     except:
         messages.error(request, "You can't delete the product.")
