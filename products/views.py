@@ -46,14 +46,17 @@ def index(request):
     return render(request, 'ecommerce/index.html', context)
 
 def product_details(request, slug):
-    product = load_product_by_slug( slug )
-    STRIPE_IS_ACTIVE = getattr(settings, 'STRIPE_IS_ACTIVE')
+    try:
+        product = load_product_by_slug( slug )
+        STRIPE_IS_ACTIVE = getattr(settings, 'STRIPE_IS_ACTIVE')
 
-    context = { 
-        'product': product,
-        'STRIPE_IS_ACTIVE': STRIPE_IS_ACTIVE
-     }
-    return render(request, 'ecommerce/template.html', context)
+        context = { 
+            'product': product,
+            'STRIPE_IS_ACTIVE': STRIPE_IS_ACTIVE
+        }
+        return render(request, 'ecommerce/template.html', context)
+    except:
+        return redirect('/page404')
 
 def get_publishable_key(request):
     stripe_config = {"publicKey": getattr(settings, 'STRIPE_PUBLISHABLE_KEY')}
