@@ -5,6 +5,7 @@
 
 - UI/UX Changes 
 - Image Management
+- Improved Error Checking
 
 ## [1.0.2] 2022-10-25
 ### Improvements
