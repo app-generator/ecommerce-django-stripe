@@ -94,8 +94,8 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link mb-0 px-0 py-1"
-                        href="{% url 'delete_product' slug=local_product|product_slug %}">
+                      <a role="button" data-bs-toggle="modal" data-bs-target="#deleteProduct{{forloop.counter}}" class="nav-link mb-0 px-0 py-1"
+                        href="#">
                           <i class="fas fa-trash text-danger ms-2"></i>
                       </a>
                     </li>
@@ -104,6 +104,31 @@
               </div>
             </div>
           </div>
+          
+          
+          <!-- delete confirmation  -->
+          <div class="modal fade" id="deleteProduct{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Delete Product</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Do you want to remove this product?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                  <form method="post" action="{% url 'delete_product' slug=local_product|product_slug %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- delete confirmation  -->
+
 
           <div id="local{{forloop.counter}}" class="tab-pane collapse" id="code-header-1">
             <form method="post" action="{% url 'update_product' slug=local_product|product_slug %}" enctype="multipart/form-data">
@@ -348,7 +373,3 @@
 
 {% endblock content %}
 
-{% block javascripts %}
-
-
-{% endblock javascripts %}
