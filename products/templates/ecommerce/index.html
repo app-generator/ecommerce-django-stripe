@@ -18,23 +18,18 @@
         <div class="col-12 mx-auto">
           <div class="row py-lg-7 py-5">
             <div class="col-lg-3 col-md-5 position-relative my-auto">
-              <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" 
               
-              {% if featured.img_card %} 
-                {% if featured.img_card|first in 'http' %}
-                  src="{{ featured.img_card }}"
-                {% else %}
-                  src="data:image/png;base64,{{ featured.img_card }}"
-                {% endif %} 
-              {% else %}  
+              <!-- IMG -->
+              <img class="img border-radius-md max-width-200 w-100 position-relative z-index-2" 
+                
                 {% if featured.img_main|first in 'http'%}
                   src="{{ featured.img_main }}"
                 {% else %}
                   src="data:image/png;base64,{{ featured.img_main }}"
                 {% endif %}
-              {% endif %}
 
-                   >
+              ><!-- IMG Ends-->
+            
             </div>
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mt-sm-0 mt-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
