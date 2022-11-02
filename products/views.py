@@ -283,7 +283,7 @@ def delete_product(request, slug):
 # pages
 
 def presentation(request):
-    return render(request, 'pages/presentation.html')
+    return render(request, 'pages/index.html')
 
 def about_us(request):
     return render(request, 'pages/page-about-us.html')
