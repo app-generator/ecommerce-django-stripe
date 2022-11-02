@@ -26,7 +26,7 @@ https://user-images.githubusercontent.com/51070104/197837019-4634377f-c61f-4df1-
 
 <br />
 
-## ✨ Quick Start
+## Quick Start
 
 > 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
 
@@ -81,7 +81,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ Create a new Product
+## Create a new Product
 
 - Go to `products/templates/products` directory
 - Create a new `JSON` file with data:
@@ -129,7 +129,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ Codebase structure
+## Codebase structure
 
 The project has a simple structure, represented as bellow:
 
@@ -165,7 +165,7 @@ The project has a simple structure, represented as bellow:
 
 <br />
 
-## ✨ Credits & Links
+## Credits & Links
 
 - [Django Framework](https://www.djangoproject.com/) - The official website
 - [Stripe Dev Tools](https://stripe.com/docs/development) - official docs
