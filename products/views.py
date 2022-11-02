@@ -9,7 +9,7 @@ import re
 import base64
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import stripe
 from products.utils import get_product, Product, load_product, load_product_by_slug, load_json_product, load_product_by_id
 from django.contrib.admin.views.decorators import staff_member_required
@@ -17,10 +17,6 @@ from django.contrib import messages
 from stripe_python import get_products
 
 stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
-
-STRIPE_KEY = getattr(settings, 'STRIPE_SECRET_KEY')
-OUTPUT_FILE = 'products/templates/products/products.json' 
-
 
 def index(request):
     # Collect Products
@@ -103,49 +99,61 @@ def create_checkout_session(request, slug):
 
 @staff_member_required
 def load_product_json(request):
+
     json_data = []
-
-    # load stripe product
-    if request.method == "POST":
-        products = stripe.Product.list(expand = ['data.default_price'])
-        productdict = []
-        for product in products:
-            dict= {}
-            dict['id'] = product['id']
-            dict['name'] = product['name']
-            dict['price'] = product["default_price"]["unit_amount"]/100
-            dict['currency'] = product["default_price"]["currency"]
-            dict['full_description'] = product["description"]
-            dict['info'] = product["description"][0:30]
-
-            for index, image in enumerate(product['images']):
-                dict['img_main'] = image
-
-            dict['img_card'] = ''
-            dict['img_1'] = ''
-            dict['img_2'] = ''
-            dict['img_3'] = ''
-
-            productdict.append(dict)
-        
-        for product in productdict:
-            json_product = json.dumps( product, indent=4, separators=(',', ': ') )
-            json_data.append(json_product)
-
-    # load local product
-    local_products = []
-    for aJsonPath in get_product():  
-        if 'featured.json' in aJsonPath:
-            continue
-        local_json = load_json_product(aJsonPath)
-        local_products.append(json.dumps( local_json, indent=4, separators=(',', ': ') ))
+    context   = {}
     
-    context = {
-        'productdict': json_data,
-        'local_products': local_products
-    }
-    return render(request, 'ecommerce/create-product.html', context)
+    try: 
 
+        if not stripe.api_key:
+            raise Exception('Stripe secrets not provided in ENV.')
+
+        # load stripe product
+        if request.method == "POST":
+            products = stripe.Product.list(expand = ['data.default_price'])
+            productdict = []
+            for product in products:
+                dict= {}
+                dict['id'] = product['id']
+                dict['name'] = product['name']
+                dict['price'] = product["default_price"]["unit_amount"]/100
+                dict['currency'] = product["default_price"]["currency"]
+                dict['full_description'] = product["description"]
+                dict['info'] = product["description"][0:30]
+
+                for index, image in enumerate(product['images']):
+                    dict['img_main'] = image
+
+                dict['img_card'] = ''
+                dict['img_1'] = ''
+                dict['img_2'] = ''
+                dict['img_3'] = ''
+
+                productdict.append(dict)
+            
+            for product in productdict:
+                json_product = json.dumps( product, indent=4, separators=(',', ': ') )
+                json_data.append(json_product)
+
+        # load local product
+        local_products = []
+        for aJsonPath in get_product():  
+            if 'featured.json' in aJsonPath:
+                continue
+            local_json = load_json_product(aJsonPath)
+            local_products.append(json.dumps( local_json, indent=4, separators=(',', ': ') ))
+
+
+        context['productdict'] = json_data
+        context['local_products'] = local_products
+
+    except Exception as e:
+
+        errInfo = str(e)
+        context['error'] = errInfo
+
+    # Serve the page to the user
+    return render(request, 'ecommerce/create-product.html', context)
 
 @staff_member_required
 def create_new_product(request):

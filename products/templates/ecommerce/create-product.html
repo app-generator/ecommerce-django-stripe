@@ -17,9 +17,17 @@
         <div class="d-block mb-3">
           <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-sm btn-outline-info text-nowrap mb-0">Get products from Stripe</button>
+            <button type="submit"
+                    {% if error %} disabled {% endif %} 
+                    class="btn btn-sm btn-outline-info text-nowrap mb-0">Get products from Stripe {% if error %} (disabled) {% endif %}</button>
+                    
           </form>
         </div>
+        
+        {% if error %} 
+          <span class="text-danger">{{ error }}</span>
+        {% endif %}
+
         {% if productdict %}
         {% for product in productdict %}
         <div class="mb-3">
