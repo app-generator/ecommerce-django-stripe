@@ -2,7 +2,7 @@
 
 Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django**.
 
-- 👉 [Django & Stripe Presentation](https://youtu.be/Ui3YZ0R1weg) - published on `YouTube`
+- 👉 [Django & Stripe Presentation](https://www.youtube.com/watch?v=7U9qRKR-src) - published on `YouTube`
 - 👉 Free [Support](https://appseed.us/) via `Github` (issues tracker) and `Discord`. 
 
 <br />
