@@ -14,6 +14,7 @@ urlpatterns = [
     path('load-product/', views.load_product_json, name='load_product'),
     path('create-product/', views.create_new_product, name='create_product'),
     path('update-product/<str:slug>/', views.update_product, name='update_product'),
+    path('delete-product/<str:slug>/', views.delete_product, name='delete_product'),
     path('create-checkout-session/<str:slug>/', views.create_checkout_session, name="create-checkout-session"),
     path('success/', views.success, name="success"),
     path('cancelled/', views.cancelled, name="cancelled"),

@@ -4,6 +4,9 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import json
+import os
+import re
+import base64
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
@@ -17,6 +20,7 @@ stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY')
 
 STRIPE_KEY = getattr(settings, 'STRIPE_SECRET_KEY')
 OUTPUT_FILE = 'products/templates/products/products.json' 
+
 
 def index(request):
     # Collect Products
@@ -34,22 +38,25 @@ def index(request):
         # Is Valid? Save the object
         if product:     
             products.append( product )
-
+    
     context = {
         'featured': load_product_by_slug('featured'),
-        'products': products
+        'products': products,
     }
     return render(request, 'ecommerce/index.html', context)
 
 def product_details(request, slug):
-    product = load_product_by_slug( slug )
-    STRIPE_IS_ACTIVE = getattr(settings, 'STRIPE_IS_ACTIVE')
+    try:
+        product = load_product_by_slug( slug )
+        STRIPE_IS_ACTIVE = getattr(settings, 'STRIPE_IS_ACTIVE')
 
-    context = { 
-        'product': product,
-        'STRIPE_IS_ACTIVE': STRIPE_IS_ACTIVE
-     }
-    return render(request, 'ecommerce/template.html', context)
+        context = { 
+            'product': product,
+            'STRIPE_IS_ACTIVE': STRIPE_IS_ACTIVE
+        }
+        return render(request, 'ecommerce/template.html', context)
+    except:
+        return redirect('/page404')
 
 def get_publishable_key(request):
     stripe_config = {"publicKey": getattr(settings, 'STRIPE_PUBLISHABLE_KEY')}
@@ -155,6 +162,7 @@ def create_new_product(request):
             outputFile = f'products/templates/products/{slug}.json'
             with open(outputFile, "w") as outfile: 
                 outfile.write( product )
+                messages.success(request, "Product added successfully!")
                 outfile.close()
             return redirect('/load-product')
     else:
@@ -165,26 +173,103 @@ def create_new_product(request):
 def update_product(request, slug):
     if request.method == 'POST':
         product = request.POST.get('product')
-        id = json.loads(product)['id']
-        name = json.loads(product)['name']
+        featured = request.POST.get('featured')
+
+
+        # main image
+        main_image = request.FILES.get('main_image', "")
+        main_img = ''
+        if main_image:
+            main_img = base64.b64encode(main_image.read()).decode()
+        elif request.POST.get('main_img_link'):
+            main_img = request.POST.get('main_img_link')
+        else:
+            main_img = json.loads(product)['img_main']
+
+        
+        # card image
+        card_image = request.FILES.get('card_image', "")
+        card_img = ''
+        if card_image:
+            card_img = base64.b64encode(card_image.read()).decode()
+        elif request.POST.get('card_img_link'):
+            card_img = request.POST.get('card_img_link')
+        else:
+            card_img = json.loads(product)['img_card']
+        
+        # image 1
+        image_1 = request.FILES.get('image_1', "")
+        img_1 = ''
+        if image_1:
+            img_1 = base64.b64encode(image_1.read()).decode()
+        elif request.POST.get('img1_link'):
+            img_1 = request.POST.get('img1_link')
+        else:
+            img_1 = json.loads(product)['img_1']
+
+        # image 2
+        image_2 = request.FILES.get('image_2', "")
+        img_2 = ''
+        if image_2:
+            img_2 = base64.b64encode(image_2.read()).decode()
+        elif request.POST.get('img2_link'):
+            img_2 = request.POST.get('img2_link')
+        else:
+            img_2 = json.loads(product)['img_2']
+
+        # image 3
+        image_3 = request.FILES.get('image_3', "")
+        img_3 = ''
+        if image_3:
+            img_3 = base64.b64encode(image_3.read()).decode()
+        elif request.POST.get('img3_link'):
+            img_3 = request.POST.get('img3_link')
+        else:
+            img_3 = json.loads(product)['img_3']
+
+        prod = {
+            'id': json.loads(product)['id'],
+            'name': json.loads(product)['name'],
+            'currency': json.loads(product)['currency'],
+            'price': request.POST.get('price'),
+            'full_description': request.POST.get('full_description'),
+            'info': request.POST.get('info'),
+            'img_main': main_img,
+            'img_card': card_img,
+            'img_1': img_1,
+            'img_2': img_2,
+            'img_3': img_3,
+        }
 
         try:
-            products = load_product_by_slug( slug )
-            if (products.id == id) and (products.name == name):
-                outputFile = f'products/templates/products/{slug}.json'
-                with open(outputFile, "r+") as outfile:
-                    outfile.seek(0)
-                    outfile.write(product)
-                    outfile.truncate()
-                return redirect('/load-product')
+            if featured:
+                outputFile = f'products/templates/products/featured.json'
             else:
-                messages.error(request, "You can't update product id or name!")
-                return redirect('/load-product')
+                outputFile = f'products/templates/products/{slug}.json'
+
+            with open(outputFile, "r+") as outfile:
+                outfile.seek(0)
+                outfile.write(json.dumps(prod, indent=4, separators=(',', ': ')))
+                messages.success(request, 'Product updated!')
+                outfile.truncate()
+            return redirect('/load-product')
         except:
             messages.error(request, "You can't update product id or name!")
             return redirect('/load-product')  
     else:
         return redirect('/load-product')
+
+
+@staff_member_required
+def delete_product(request, slug):
+    try:
+        outputFile = f'products/templates/products/{slug}.json'
+        os.remove(outputFile)
+        messages.success(request, "Product Deleted!")
+        return redirect('/load-product')
+    except:
+        messages.error(request, "You can't delete the product.")
+        return redirect('/load-product')  
 
 
 # pages
