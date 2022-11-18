@@ -2,11 +2,6 @@
 
 Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django**.
 
-- 👉 [Django & Stripe Presentation](https://www.youtube.com/watch?v=7U9qRKR-src) - published on `YouTube`
-- 👉 Free [Support](https://appseed.us/) via `Github` (issues tracker) and `Discord`. 
-
-<br />
-
 > Roadmap & Features 
 
 | Status | Item | info | 
@@ -20,7 +15,15 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | ❌ | **Docker** | - |
 | ❌ | **CI/CD** | Render Deployment Platform |
 
-<br /> 
+<br />
+
+## [Black Friday](https://appseed.us/discounts/) - `75%OFF`
+
+> The campaign is active until `30.NOV` and applies to all products and licenses.
+
+[![AppSeed - Black Friday 2022 Campaign, 75% OFF Discount (all products).](https://user-images.githubusercontent.com/51070104/201829599-9fe6bdd7-3f19-46f3-9115-962eeb13bf29.jpg)](https://appseed.us/discounts/)
+
+<br />
 
 https://user-images.githubusercontent.com/51070104/197837019-4634377f-c61f-4df1-9675-1365556be37f.mp4
 
