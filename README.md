@@ -27,6 +27,10 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 ## ✨ Video Presentation
 
+> This video explains how to use the product
+
+<br /> 
+
 https://user-images.githubusercontent.com/51070104/197837019-4634377f-c61f-4df1-9675-1365556be37f.mp4
 
 <br />
