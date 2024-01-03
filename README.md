@@ -1,8 +1,16 @@
 # [Django & Stripe](https://blog.appseed.us/django-stripe-mini-ecommerce/) `Mini eCommerce`
 
-Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django**.
+Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Flask & Stripe**.
 
-> Roadmap & Features 
+> 👉 **For more starters and support** access [AppSeed](https://appseed.us/) 
+
+<br />
+
+![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
+
+<br />
+
+## Features 
 
 | Status | Item | info | 
 | --- | --- | --- |
@@ -12,22 +20,10 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | ✅ | **JSON** | `Products definition` - see [sample](./products/templates/products/product-air-zoom-pegasus.json) |
 | ✅ | Automatic Products Discovery | Source DIR: [templates\products](./products/templates/products) |
 | ✅ | **Dw Products from Stripe** | On going development via [Python Stripe Library](https://pypi.org/project/python-stripe/) |
-| ❌ | **Docker** | - |
-| ❌ | **CI/CD** | Render Deployment Platform |
 
 <br />
 
-## ✨ Video Presentation
-
-> This video explains how to use the product
-
-<br /> 
-
-https://user-images.githubusercontent.com/51070104/197837019-4634377f-c61f-4df1-9675-1365556be37f.mp4
-
-<br />
-
-## Quick Start
+## Manual Build
 
 > 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
 
@@ -105,7 +101,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## ✨ Load and create product from stripe
+## Load and create product from stripe
 
 
 - Go to `Create Product` route in `Products` dropdown [You must be a superuser] 
@@ -121,12 +117,6 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 <br />
 
 ![Django Stripe Sample - Air ZOOM Pegasus (sample Product](https://user-images.githubusercontent.com/51070104/152586940-2f3b31fb-f067-487a-98ca-26d9e1936514.png)
-
-<br />
-
-> Homepage eCommerce cards
-
-![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
 
 <br />
 
