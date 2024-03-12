@@ -25,7 +25,7 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | -                                     | ✅ Deployment Assistance                          |  -                                   |
 | -                                     | -                                                 |  -                                   |
 | ------------------------------------  | ------------------------------------              | ------------------------------------|
-| ✓ [LIVE Demo](https://django-datta-able.appseed-srv1.com/)  | 🚀 [LIVE Demo](https://rocket-ecommerce.onrender.com/) | 🛒 `Order`: **[$3,999](https://appseed.gumroad.com/l/rocket-package)** (GUMROAD) |  
+| -                                     | 🚀 [LIVE Demo](https://rocket-ecommerce.onrender.com/) | 🛒 `Order`: **[$3,999](https://appseed.gumroad.com/l/rocket-package)** (GUMROAD) |  
 
 <br />
 
