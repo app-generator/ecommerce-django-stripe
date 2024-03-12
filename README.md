@@ -33,19 +33,6 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 <br />
 
-## Features 
-
-| Status | Item | info | 
-| --- | --- | --- |
-| ✅ | **Django** | For `backend logic` |
-| ✅ | **Stripe** | `Payment processor` |
-| ✅ | **[Soft UI Design](https://www.creative-tim.com/product/soft-ui-design-system?AFFILIATE=128200)** | (Free Version) by `Creative-Tim` |
-| ✅ | **JSON** | `Products definition` - see [sample](./products/templates/products/product-air-zoom-pegasus.json) |
-| ✅ | Automatic Products Discovery | Source DIR: [templates\products](./products/templates/products) |
-| ✅ | **Dw Products from Stripe** | On going development via [Python Stripe Library](https://pypi.org/project/python-stripe/) |
-
-<br />
-
 ## Manual Build
 
 > 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
