@@ -17,7 +17,7 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | ✓ No Database                         | ✅ Checkout                                      | ✅ Technical SPECS                  |
 | -                                     | ✅ Discounts Page                                | ✅ Documentation                    |
 | -                                     | ✅ Stripe Products Import                        | ✅ **30 days Delivery Warranty**    |
-| -                                     | ✅ Local Products Customization (images, tags..) |  -                                   |
+| -                                     | ✅ Local Products Customization                   |  -                                   |
 | -                                     | ✅ Analytics                                      |  -                                   |
 | -                                     | ✅ Transactions Tracking                          |  -                                   |
 | -                                     | ✅ **PRO Support** - [Email & Discord](https://appseed.us/support/) |  -                 |
