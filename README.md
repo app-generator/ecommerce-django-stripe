@@ -10,8 +10,8 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 | Free Version                          | [PRO Version](https://github.com/app-generator/rocket-ecommerce) - **[$99](https://appseed.gumroad.com/l/rocket-ecommerce)** 🛒 | [Custom Development](https://appseed.us/custom-development/) |  
 | --------------------------------------| --------------------------------------| --------------------------------------|
-| ✓ **Django**                          | **Everything in Free**, plus:                     | **Everything in PRO**, plus:         |
-| ✓ Stripe                              | ✅ Stack: **Django, Tailwind, React**            | ✅ **1mo Custom Development**       | 
+| ✓ Stack: **Django, Bootstrap**         | ✅ Stack: **Django, Tailwind**                   | **Everything in PRO**, plus:         |
+| ✓ Stripe                              | ✅ Lifetime Updates, Unlimited Projects          | ✅ **1mo Custom Development**       | 
 | ✓ Minimal Bootstrap Design            | ✅ Stripe                                        | ✅ **Team**: PM, Developer, Tester  |
 | ✓ Automatic Products Discovery        | ✅ Categories, TAGS                              | ✅ Weekly Sprints                   |
 | ✓ No Database                         | ✅ Checkout                                      | ✅ Technical SPECS                  |
@@ -20,6 +20,7 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 | -                                     | ✅ Local Products Customization                   |  -                                   |
 | -                                     | ✅ Analytics                                      |  -                                   |
 | -                                     | ✅ Transactions Tracking                          |  -                                   |
+| -                                     | ✅ Zero Configuration                             |  -                                   |
 | -                                     | ✅ **PRO Support** - [Email & Discord](https://appseed.us/support/) |  -                 |
 | -                                     | ✅ Deployment Assistance                          |  -                                   |
 | -                                     | -                                                 |  -                                   |
