@@ -2,7 +2,29 @@
 
 Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Flask & Stripe**.
 
-> 👉 **For more starters and support** access [AppSeed](https://appseed.us/) 
+<br />
+
+## Features
+
+> `Have questions?` Contact **[Support](https://appseed.us/support/)** (Email & Discord) provided by **AppSeed**
+
+| Free Version                          | [PRO Version](https://github.com/app-generator/rocket-ecommerce) - **[$99](https://appseed.gumroad.com/l/rocket-ecommerce)** 🛒 | [Custom Development](https://appseed.us/custom-development/) |  
+| --------------------------------------| --------------------------------------| --------------------------------------|
+| ✓ **Django**                          | **Everything in Free**, plus:                     | **Everything in PRO**, plus:         |
+| ✓ Stripe                              | ✅ Stack: **Django, Tailwind, React**            | ✅ **1mo Custom Development**       | 
+| ✓ Minimal Bootstrap Design            | ✅ Stripe                                        | ✅ **Team**: PM, Developer, Tester  |
+| ✓ Automatic Products Discovery        | ✅ Categories, TAGS                              | ✅ Weekly Sprints                   |
+| ✓ No Database                         | ✅ Checkout                                      | ✅ Technical SPECS                  |
+| -                                     | ✅ Discounts Page                                | ✅ Documentation                    |
+| -                                     | ✅ Stripe Products Import                        | ✅ **30 days Delivery Warranty**    |
+| -                                     | ✅ Local Products Customization (images, tags..) |  -                                   |
+| -                                     | ✅ Analytics                                      |  -                                   |
+| -                                     | ✅ Transactions Tracking                          |  -                                   |
+| -                                     | ✅ **PRO Support** - [Email & Discord](https://appseed.us/support/) |  -                 |
+| -                                     | ✅ Deployment Assistance                          |  -                                   |
+| -                                     | -                                                 |  -                                   |
+| ------------------------------------  | ------------------------------------              | ------------------------------------|
+| ✓ [LIVE Demo](https://django-datta-able.appseed-srv1.com/)  | 🚀 [LIVE Demo](https://rocket-ecommerce.onrender.com/) | 🛒 `Order`: **[$3,999](https://appseed.gumroad.com/l/rocket-package)** (GUMROAD) |  
 
 <br />
 
