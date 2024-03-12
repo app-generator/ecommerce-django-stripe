@@ -10,9 +10,9 @@ Open-source mini `eCommerce` project that loads the products from `JSON` files s
 
 | Free Version                          | [PRO Version](https://github.com/app-generator/rocket-ecommerce) - **[$99](https://appseed.gumroad.com/l/rocket-ecommerce)** 🛒 | [Custom Development](https://appseed.us/custom-development/) |  
 | --------------------------------------| --------------------------------------| --------------------------------------|
-| ✓ Stack: **Django, Bootstrap**         | ✅ Stack: **Django, Tailwind**                   | **Everything in PRO**, plus:         |
+| ✓ Stack: **Django, Bootstrap**        | ✅ Stack: **Django, Tailwind**                   | **Everything in PRO**, plus:         |
 | ✓ Stripe                              | ✅ Lifetime Updates, Unlimited Projects          | ✅ **1mo Custom Development**       | 
-| ✓ Minimal Bootstrap Design            | ✅ Stripe                                        | ✅ **Team**: PM, Developer, Tester  |
+| ✓ Minimal Bootstrap 4 Design          | ✅ Stripe                                        | ✅ **Team**: PM, Developer, Tester  |
 | ✓ Automatic Products Discovery        | ✅ Categories, TAGS                              | ✅ Weekly Sprints                   |
 | ✓ No Database                         | ✅ Checkout                                      | ✅ Technical SPECS                  |
 | -                                     | ✅ Discounts Page                                | ✅ Documentation                    |
