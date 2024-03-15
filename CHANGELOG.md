@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.6] 2024-03-15
+### Changes
+
+- README update
+  - [PRO Version](https://github.com/app-generator/rocket-ecommerce) features 
+
 ## [1.0.4] 2024-01-03
 ### Changes
 
