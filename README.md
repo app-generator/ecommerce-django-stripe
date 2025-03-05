@@ -1,12 +1,20 @@
-# [Django & Stripe](https://blog.appseed.us/django-stripe-mini-ecommerce/) `Mini eCommerce`
+# Django & Stripe `Mini eCommerce`
 
-**[Open-source eCommerce Starter](https://github.com/app-generator/rocket-ecommerce)** that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django & Stripe**.
+**Open-source eCommerce Starter** that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django & Stripe**.
+
+- [Django mini eCommerce](https://github.com/app-generator/ecommerce-django-stripe)
+- [Rocket eCommerce](https://app-generator.dev/product/rocket-ecommerce/django/) - PRO version
+  - ✅ Stripe Integration
+  - ✅ Checkout, Discounts Page
+  - ✅ Tags, Categories
+  - ✅ Analytics
+  - ✅ Generated Sitemap 
 
 <br />
 
 ## Manual Build
 
-> 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
+> 👉 Download the code from the GH repository (using `GIT`) 
 
 ```bash
 $ git clone https://github.com/app-generator/ecommerce-django-stripe.git
@@ -15,7 +23,7 @@ $ cd ecommerce-django-stripe
 
 <br />
 
-> 👉 **Step 2** - Create `.env` using provided `env.sample`
+> 👉 Create `.env` using provided `env.sample`
 
  Add `.env` file in your projects root directory and add the following credentials
 
@@ -29,7 +37,7 @@ DOMAIN_URL=
 
 <br />
 
-> 👉 **Step 3** - Install dependencies
+> 👉 Install dependencies
 
 ```bash
 $ python -m venv env
@@ -39,7 +47,7 @@ $ pip install -r requirements.txt
 
 <br /> 
 
-> 👉 **Step 4** - Migrate DB & Start the APP
+> 👉 Migrate DB & Start the APP
 
 ```bash
 $ python manage.py migrate
@@ -50,7 +58,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-> 👉 **Step 5** - Access the products and initiate a payment
+> 👉 Access the products and initiate a payment
 
 **IMPORTANT**: Make sure your Stripe account is running in `TEST Mode` and Use Test CC provided by Stripe:
 
@@ -81,8 +89,7 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## Load and create product from stripe
-
+## Load and create product from Stripe
 
 - Go to `Create Product` route in `Products` dropdown [You must be a superuser] 
 - On the left side there should be a button `Get Products From Stripe` this button will pull all the products associated with the stripe account. [demo](./products/static/products/demo/load-stripe-product.png)
@@ -96,49 +103,9 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-![Django Stripe Sample - Air ZOOM Pegasus (sample Product](https://user-images.githubusercontent.com/51070104/152586940-2f3b31fb-f067-487a-98ca-26d9e1936514.png)
+## Need More? Go PRO with [Rocket eCommerce](https://app-generator.dev/product/rocket-ecommerce/django/)
 
-<br />
-
-<div align="center">
-    <a href="https://app-generator.dev/product/rocket-ecommerce/django/">
-        <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/272178364-cbac6d97-b2dc-4d95-bab6-891f4ee7d84d.png"" width="64" height="64" alt="Rocket Icon">
-    </a>
-    <h1>
-         Go PRO with 
-        <a href="https://app-generator.dev/product/rocket-ecommerce/django/">
-            Rocket eCommerce
-        </a>
-    </h1>
-    <p>
-        <strong>Django</strong> &bull; <strong>TailwindCSS</strong> &bull; <strong>Stripe</strong> &bull; <strong>Analytics</strong> &bull; <strong>Docker</strong> &bull; <strong>CI/CD</strong> &bull; <strong>Lifetime Updates</strong> &bull; <strong>Unlimited Projects</strong>
-    </p>  
-    <h3>     
-        <a target="_blank" href="https://rocket-ecommerce.onrender.com">
-            Demo
-        </a>
-        &nbsp; &bull; &nbsp;
-        <a target="_blank" href="https://app-generator.dev/product/rocket-ecommerce/django/#pricing">
-           Buy License
-        </a>
-    </h3>    
-    <p>
-        <strong>Once authenticated, the ADMIN (superuser) can import the products from Stripe and customize each one locally by adding properties like Images, Tags, Discount, .. etc.</strong>
-        <br /> <br />
-        The product comes with <strong>Docker</strong> and <a href="https://deploypro.dev/" target="_blank">CI/CD Support</a>
-    </p>  
-    <hr />
-</div>
-
-<br />
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/3d3e4abc-3a4e-4ef2-8934-d55bc25942db" alt="Rocket eCommerce - Django Starter styled with Tailwind and Flowbite.">
-</div>
-
-<br />
-
-## Features 
+Production-ready eCommerce CMS integrated with Stripe, Analytics, Discounts Page, Docker and CI/CD support - Actively supported by [App-Generator](https://app-generator.dev/).
 
 | Status | Item | info | 
 | --- | --- | --- |
@@ -154,7 +121,10 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 | ✅ | Transactions Tracking | YES |
 | ✅ | Docker | YES |
 | ✅ | CI/CD | Render |
-| ✅  | Active versioning and [support](https://appseed.us/support/) | [AppSeed](https://appseed.us/) |
-| ✅  | [AWS, DO, Azure Deploy Assistance](https://deploypro.dev/)   | `DeployPRO` |
+
+![Rocket eCommerce - Production-ready eCommerce CMS integrated with Stripe, Analytics, Discounts Page, Docker and CI/CD support.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/272178364-cbac6d97-b2dc-4d95-bab6-891f4ee7d84d.png) 
 
 <br />
+
+---
+Django & Stripe `Mini eCommerce` - Open-source eCommerce Starter provided by [App-Generator](https://app-generator.dev/).
