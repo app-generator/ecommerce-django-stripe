@@ -2,20 +2,6 @@
 
 **[Open-source eCommerce Starter](https://github.com/app-generator/rocket-ecommerce)** that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **Django & Stripe**.
 
----
-
-> For a **complete set of features** and long-term support, check out **[Dynamic Django](https://app-generator.dev/docs/developer-tools/dynamic-django/index.html)**, a powerful starter that incorporates:
-
-- ✅ [Dynamic DataTables](https://app-generator.dev/docs/developer-tools/dynamic-django/datatables.html): using a single line of configuration, the data saved in any table is automatically managed
-- ✅ [Dynamic API](https://app-generator.dev/docs/developer-tools/dynamic-django/api.html): any model can become a secure API Endpoint using DRF
-- ✅ [Dynamic Charts](https://app-generator.dev/docs/developer-tools/dynamic-django/charts.html): extract relevant charts without coding all major types are supported
-- ✅ [CSV Loader](https://app-generator.dev/docs/developer-tools/dynamic-django/csv-loader.html): translate CSV files into Django Models and (optional) load the information
-- ✅ Powerful [CLI Tools](https://app-generator.dev/docs/developer-tools/dynamic-django/cli.html) for the GIT interface, configuration editing, updating the configuration and database (create models, migrate DB)
-
-<br />
-
-![Django & Stripe Mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/196479738-be20d203-df44-47ce-a124-d3ed426ef622.jpg)
-
 <br />
 
 ## Manual Build
@@ -93,7 +79,6 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
   - Product page is available at address:
     - `http://127.0.0.1:8000/product/<SLUG>/` where the SLUG is the name of the JSON file 
 
-
 <br />
 
 ## Load and create product from stripe
@@ -115,48 +100,65 @@ Visit `http://localhost:8000` in your browser. The app should be up & running.
 
 <br />
 
-## Codebase structure
-
-The project has a simple structure, represented as bellow:
-
-```bash
-< PROJECT ROOT >
-   |
-   |-- products/__init__.py
-   |-- products/
-   |    |-- static/
-   |    |    |-- <css, JS, images>         # CSS files, Javascripts files
-   |    |
-   |    |-- templates/
-   |    |    |
-   |    |    |-- includes/                 # Page chunks, components
-   |    |    |    |-- navigation.html      # Top bar
-   |    |    |    |-- sidebar.html         # Left sidebar
-   |    |    |    |-- scripts.html         # JS scripts common to all pages
-   |    |    |    |-- footer.html          # The common footer
-   |    |    |
-   |    |    |-- layouts/                  # App Layouts (the master pages)
-   |    |    |    |-- base.html            # Used by common pages like index, UI
-   |    |    |    |-- base-fullscreen.html # Used by auth pages (login, register)
-   |    |    |
-   |    |    |-- products/                        # Define your products here
-   |    |    |    |-- nike-goalkeeper-match.json  # Sample product
-   |
-   |-- requirements.txt
-   |
-   |-- run.py
-   |
-   |-- ************************************************************************
-```
-
-<br />
-
-## Credits & Links
-
-- [Django Framework](https://www.djangoproject.com/) - The official website
-- [Stripe Dev Tools](https://stripe.com/docs/development) - official docs
+<div align="center">
+    <a href="https://app-generator.dev/product/rocket-ecommerce/django/">
+        <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/272178364-cbac6d97-b2dc-4d95-bab6-891f4ee7d84d.png"" width="64" height="64" alt="Rocket Icon">
+    </a>
+    <h1>
+         Go PRO with 
+        <a href="https://app-generator.dev/product/rocket-ecommerce/django/">
+            Rocket eCommerce
+        </a>
+    </h1>
+    <p>
+        <strong>Django</strong> &bull; <strong>TailwindCSS</strong> &bull; <strong>Stripe</strong> &bull; <strong>Analytics</strong> &bull; <strong>Docker</strong> &bull; <strong>CI/CD</strong> &bull; <strong>Lifetime Updates</strong> &bull; <strong>Unlimited Projects</strong>
+    </p>  
+    <h3>     
+        <a target="_blank" href="https://rocket-ecommerce.onrender.com">
+            Demo
+        </a>
+        &nbsp; &bull; &nbsp;
+        <a target="_blank" href="https://appseed.us/support/">
+           Support
+        </a>
+        &nbsp; &bull; &nbsp;
+        <a target="_blank" href="https://app-generator.dev/product/rocket-ecommerce/django/#pricing">
+           Buy License
+        </a>
+    </h3>    
+    <p>
+        <strong>Once authenticated, the ADMIN (superuser) can import the products from Stripe and customize each one locally by adding properties like Images, Tags, Discount, .. etc.</strong>
+        <br /> <br />
+        The product comes with <strong>Docker</strong> and <a href="https://deploypro.dev/" target="_blank">CI/CD Support</a>
+    </p>  
+    <hr />
+</div>
 
 <br />
 
----
-**[Django & Stripe](https://blog.appseed.us/django-stripe-mini-ecommerce/) Mini eCommerce** - Free sample provided by [AppSeed](https://appseed.us).
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3d3e4abc-3a4e-4ef2-8934-d55bc25942db" alt="Rocket eCommerce - Django Starter styled with Tailwind and Flowbite.">
+</div>
+
+<br />
+
+## Features 
+
+| Status | Item | info | 
+| --- | --- | --- |
+| ✅ | Stack | Django, Tailwind, React |
+| ✅ | Payments | Stripe |
+| ✅ | Categories | YES |
+| ✅ | Tags | YES |
+| ✅ | Checkout | YES |
+| ✅ | Discounts Page | YES |
+| ✅ | Products Import | Stripe |
+| ✅ | Products Local Customization | YES |
+| ✅ | Analitycs | Weekly, Monthly, Year `Sales` |
+| ✅ | Transactions Tracking | YES |
+| ✅ | Docker | YES |
+| ✅ | CI/CD | Render |
+| ✅  | Active versioning and [support](https://appseed.us/support/) | [AppSeed](https://appseed.us/) |
+| ✅  | [AWS, DO, Azure Deploy Assistance](https://deploypro.dev/)   | `DeployPRO` |
+
+<br />
