@@ -122,7 +122,7 @@ Production-ready eCommerce CMS integrated with Stripe, Analytics, Discounts Page
 | ✅ | Docker | YES |
 | ✅ | CI/CD | Render |
 
-![Rocket eCommerce - Production-ready eCommerce CMS integrated with Stripe, Analytics, Discounts Page, Docker and CI/CD support.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/272178364-cbac6d97-b2dc-4d95-bab6-891f4ee7d84d.png) 
+![Rocket eCommerce - Production-ready eCommerce CMS integrated with Stripe, Analytics, Discounts Page, Docker and CI/CD support.](https://github.com/user-attachments/assets/5db5841f-6802-4dfa-8ce7-46cf14435c5a)
 
 <br />
 
